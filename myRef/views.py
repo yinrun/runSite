@@ -10,3 +10,17 @@ def index(request):
     context = RequestContext(request,{'latest_list':latest_list,})
     return HttpResponse(template.render(context))
 
+def mytest(request):
+    latest_list = RefFile.objects.all()
+    template = loader.get_template('myRef/test.html')
+    context = RequestContext(request,{'latest_list':latest_list,})
+    return HttpResponse(template.render(context))
+
+
+def myBrowser(request):
+    latest_list = RefFile.objects.all()
+    template = loader.get_template('myRef/browser.html')
+    context = RequestContext(request,{'latest_list':latest_list,})
+    return HttpResponse(template.render(context))
+
+

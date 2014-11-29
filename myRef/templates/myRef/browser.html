@@ -1,0 +1,43 @@
+<html>
+<head>
+{% load staticfiles %}
+
+<script src="{% static 'myRef/browser_drop.js' %}" type="text/javascript"></script>
+<style type="text/css">
+.DragContainer {
+	BORDER-RIGHT: #669999 2px solid; PADDING-RIGHT: 5px; BORDER-TOP: #669999 2px solid; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 3px; BORDER-LEFT: #669999 2px solid; WIDTH: 90%; HEIGHT:90%; PADDING-TOP: 5px; BORDER-BOTTOM: #669999 2px solid
+}
+
+
+.FileIcon {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 10px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #000 1px solid; WIDTH: 194px; CURSOR: pointer; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid; FONT-FAMILY: verdana, tahoma, arial; BACKGROUND-COLOR: #eee
+}
+
+.OverFileIcon {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 10px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #000 1px solid; WIDTH: 194px; CURSOR: pointer; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid; FONT-FAMILY: verdana, tahoma, arial; BACKGROUND-COLOR: #eee
+}
+.OverFileIcon {
+	BACKGROUND-COLOR: #ffff99
+}
+
+.DragFileIcon {
+	BORDER-RIGHT: #000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 10px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #000 1px solid; WIDTH: 194px; CURSOR: pointer; PADDING-TOP: 2px; BORDER-BOTTOM: #000 1px solid; FONT-FAMILY: verdana, tahoma, arial; BACKGROUND-COLOR: #eee
+}
+
+.DragFileIcon {
+	BACKGROUND-COLOR: #ffff99
+}
+.DragFileIcon {
+	FILTER: alpha(opacity=50); BACKGROUND-COLOR: #ff99cc
+}
+</style>
+</head><body><legend>样例- 拖拽页面元素</legend>
+      <div>
+      <div class="DragContainer" id="MyContainer" overclass="OverDragContainer" dropobj="0">
+      <div class="FileIcon" id="Item1" overclass="OverFileIcon" dragclass="DragFileIcon" dragobj="0">Item #1</div>
+      <div class="FileIcon" id="Item2" overclass="OverFileIcon" dragclass="DragFileIcon" dragobj="0">Item #2</div>
+      <div class="FileIcon" id="Item3" overclass="OverFileIcon" dragclass="DragFileIcon" dragobj="0">Item #3</div>
+      <div class="FileIcon" id="Item4" overclass="OverFileIcon" dragclass="DragFileIcon" dragobj="0">Item #4</div>
+	  </div>
+
+<div style="position: absolute; display: none;"></div></body></html>
