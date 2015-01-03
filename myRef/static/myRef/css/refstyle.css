@@ -1,0 +1,20 @@
+  body{
+  	height:100%; 
+  	background:url('images/background.jpg') top center no-repeat; ;  	
+  	background-size:cover;
+  	overflow:hidden; 
+  	margin:0px; 
+  	padding:0px;
+  }
+
+
+
+
+
+    #_outerDiv{
+    height:100%; 
+    
+    position:absolute; 
+    width:100%;
+      overflow:hidden;
+    }

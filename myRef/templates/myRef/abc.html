@@ -19,6 +19,8 @@
     var startLeft = 0;
     var dragPosY = 0;
     var dragPosX = 0;
+
+    var movediv;
 	
 	function trimPX (_px) {
       if(_px==null || _px=="")
@@ -40,20 +42,21 @@
 	 * what's this mean? if(Demos[0] || Demos[4]){ if(lastTarget){
 	 * writeHistory(lastTarget, 'Mouse Down Fired'); } }
 	 */
-	 alert(target.getAttribute('id'));
+	 //alert(target.getAttribute('id'));
 	 
    movediv = document.getElementById('MyDiv'+target.getAttribute('id'))
-   //alert(movediv.getAttribute('id'));
 	 startTop = trimPX(movediv.style.top);
     startLeft = trimPX(movediv.style.left);
           var width = trimPX(movediv.style.width);
           var height = trimPX(movediv.style.height);
-          alert(event.clientX+'  '+ event.clientY+'  '+startTop+'  '+startLeft+'  '+width+'  '+height);
-          if (hitInRect(event.clientX, event.clientY, startLeft, startTop, width, height)) {
+
+          //alert(hitInRect(ev.clientX, ev.clientY, startLeft, startTop, width, height));
+          if (hitInRect(ev.clientX, ev.clientY, startLeft, startTop, width, height)) {
+            //alert(movediv.getAttribute('id')+'  '+ev.clientX+'  '+ ev.clientY+'  '+startTop+'  '+startLeft+'  '+width+'  '+height);
             dragging = true;
-            dragPosX = event.clientX;
-            dragPosY = event.clientY;
-            event.preventDefault(); // disable default behavior of browser
+            dragPosX = ev.clientX;
+            dragPosY = ev.clientY;
+            ev.preventDefault(); // disable default behavior of browser
           } 
 		  //alert(dragging);
 		  
@@ -63,25 +66,31 @@
 }
 
 function mouseMove(ev) {
-
 	ev = ev || window.event;
 	var target = ev.target || ev.srcElement;
 	
 	if (dragging){
             movediv.style.cursor="pointer";
-            movediv.style.top = parseInt(startTop)+(event.clientY - dragPosY) + "px";
-            movediv.style.left = parseInt(startLeft)+(event.clientX - dragPosX) + "px";
+            var newTop = parseInt(startTop)+(ev.clientY - dragPosY);
+            var newLeft = parseInt(startLeft)+(ev.clientX - dragPosX)
+            console.log("info",newTop+ "px    "+newLeft+"px");
+            if(newTop>=0)  movediv.style.top = newTop + "px";
+            if(newLeft>=0) movediv.style.left = newLeft + "px";            
           }
-          event.preventDefault();
+          ev.preventDefault();
   }
   
   function mouseUp(ev) {
+  ev = ev || window.event;
+  var target = ev.target || ev.srcElement;
+   // if(dragging==false) alert('click');
 	   dragging = false;
 
-          imageDiv().style.cursor="default";          
-          event.preventDefault();
+          movediv.style.cursor="default";          
+          ev.preventDefault();
   }
 	
+
 document.onmousemove = mouseMove;
 document.onmousedown = mouseDown;
 document.onmouseup = mouseUp;
@@ -134,19 +143,12 @@ document.onmouseup = mouseUp;
 </head>
 <body>
   <div id="_outerDiv">
-	<div>
-		{%if latest_list%}
-		<ul> {% for RefFile in latest_list %} 
-		<li>{{ RefFile.filename}}</a></li>
-		{% endfor %} 
-		</ul>
-		{% else %} <p>No polls are available.</p> {% endif %}
-	</div>
-    <div id="MyDivId1" style="z-index:0; position:relative; top:0px; left:0px; width:200px; height:150px;">
+
+    <div id="MyDivId1" style="z-index:0; position:absolute; top:0px; left:0px; width:200px; height:150px;">
       <img id="Id1" src="http://avatar.csdn.net/E/3/5/1_cheungmine.jpg"></img>
     </div>
 	
-	<div id="MyDivId2" style="z-index:0; position:relative; top:200px; left:200px; width:200px; height:150px;">
+	<div id="MyDivId2" style="z-index:0; position:absolute; top:200px; left:200px; width:200px; height:150px;">
       <img id="Id2" src="http://avatar.csdn.net/E/3/5/1_cheungmine.jpg"></img>
     </div>
   </div>

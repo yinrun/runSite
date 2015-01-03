@@ -12,7 +12,7 @@ def index(request):
 
 def mytest(request):
     latest_list = RefFile.objects.all()
-    template = loader.get_template('myRef/test.html')
+    template = loader.get_template('myRef/cde.html')
     context = RequestContext(request,{'latest_list':latest_list,})
     return HttpResponse(template.render(context))
 
